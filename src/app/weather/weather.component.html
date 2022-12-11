@@ -1,0 +1,32 @@
+<div class="container">
+  <div class="row">
+      <div class="col-md-6">
+          <h3 class="text-center my-4">Search for Weather:</h3>
+          <form [formGroup]="searchForm" (ngSubmit)="sendToAPI(searchForm.value)">
+              <div class="form-group">
+                  <input type="text" 
+                          class="form-control" 
+                          id="weatherLocation" 
+                          aria-describedby="weatherLocation" 
+                          placeholder="Please input a location"
+                          formControlName="location">
+              </div>
+              <div class="text-center">
+                  <button type="submit" 
+                          class="btn btn-success btn-md">Search for the weather</button>
+              </div>
+          </form>
+      </div>
+      <div class="col-md-6">
+          <h3 class="text-center my-4">Weather Details:</h3>
+          <div class="text-center">Current weather conditions: 
+                  <span *ngIf="weatherData?.currentConditions.conditions">
+                      {{weatherData?.currentConditions.conditions}}
+                  </span>
+           </div>
+          <p class="text-center">Temperature in Degrees Celcius: {{weatherData?.currentConditions.temp}}</p>
+          <p class="text-center">Feels like in Degrees Celcius: {{weatherData?.currentConditions.feelslike}} </p>
+          <p class="text-center">Location searched: {{weatherData?.resolvedAddress}} </p>
+      </div>
+  </div>
+</div>
